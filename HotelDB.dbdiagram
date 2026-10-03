@@ -1,0 +1,233 @@
+{
+  "version": "3.0.0",
+  "darkMode": true,
+  "gridEnabling": true,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "relationshipMode": "All",
+    "tablePositions": [
+      {
+        "name": "Rol",
+        "schemaName": "public",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "name": "Usuario",
+        "schemaName": "public",
+        "x": 200.02491629464282,
+        "y": -333.33374023437506
+      },
+      {
+        "name": "Cliente",
+        "schemaName": "public",
+        "x": 1008.5345075334825,
+        "y": -65.53359200613806
+      },
+      {
+        "name": "TipoHabitacion",
+        "schemaName": "public",
+        "x": 253.4123414990563,
+        "y": 357.9465808884745
+      },
+      {
+        "name": "Habitacion",
+        "schemaName": "public",
+        "x": 245.5449586865563,
+        "y": 119.11798321186677
+      },
+      {
+        "name": "Reserva",
+        "schemaName": "public",
+        "x": 610.5089268275669,
+        "y": -397.33374023437506
+      },
+      {
+        "name": "DetalleReserva",
+        "schemaName": "public",
+        "x": 640.9171097041132,
+        "y": 151.11798321186677
+      },
+      {
+        "name": "Estancia",
+        "schemaName": "public",
+        "x": 1027.2254237583704,
+        "y": -538.0673148018974
+      },
+      {
+        "name": "Factura",
+        "schemaName": "public",
+        "x": 1319.011419620903,
+        "y": -351.6721973368963
+      },
+      {
+        "name": "Pago",
+        "schemaName": "public",
+        "x": 1629.3005196973834,
+        "y": -378.3718644467185
+      },
+      {
+        "name": "Bitacora",
+        "schemaName": "public",
+        "x": 568.5755440848214,
+        "y": -76.8001046316964
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "id_rol"
+        ],
+        "firstTableName": "Rol",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_rol"
+        ],
+        "secondTableName": "Usuario",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_tipo"
+        ],
+        "firstTableName": "TipoHabitacion",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_tipo"
+        ],
+        "secondTableName": "Habitacion",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_habitacion"
+        ],
+        "firstTableName": "Habitacion",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_habitacion"
+        ],
+        "secondTableName": "DetalleReserva",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_estancia"
+        ],
+        "firstTableName": "Estancia",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_estancia"
+        ],
+        "secondTableName": "Factura",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_factura"
+        ],
+        "firstTableName": "Factura",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_factura"
+        ],
+        "secondTableName": "Pago",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "Usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "Bitacora",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_cliente"
+        ],
+        "firstTableName": "Cliente",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_cliente"
+        ],
+        "secondTableName": "Reserva",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "Usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "Reserva",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_reserva"
+        ],
+        "firstTableName": "Reserva",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_reserva"
+        ],
+        "secondTableName": "Estancia",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_reserva"
+        ],
+        "firstTableName": "DetalleReserva",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id_reserva"
+        ],
+        "secondTableName": "Reserva",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      }
+    ]
+  },
+  "views": {}
+}

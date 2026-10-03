@@ -1,0 +1,113 @@
+Project HotelDB {
+  database_type: 'SQL Server'
+  Note: 'Modelo relacional del sistema hotelero'
+}
+
+Table Rol {
+  id_rol int [pk, increment]
+  nombre nvarchar(30) [not null, unique]
+}
+
+Table Usuario {
+  id_usuario int [pk, increment]
+  usuario nvarchar(30) [not null, unique]
+  clave_hash nvarchar(200) [not null]
+  id_rol int [not null, ref: > Rol.id_rol]
+  activo bit [default: 1]
+}
+
+Table Cliente {
+  id_cliente int [pk, increment]
+  nombre nvarchar(60) [not null]
+  apellido nvarchar(60) [not null]
+  tipo_documento char(3) [not null]
+  numero_documento nvarchar(25) [not null, unique]
+  telefono nvarchar(20) [not null]
+  email nvarchar(100)
+  pais nvarchar(40) [default: 'Guatemala']
+}
+
+Table TipoHabitacion {
+  id_tipo int [pk, increment]
+  nombre nvarchar(30) [not null]
+  capacidad tinyint [not null]
+  tarifa decimal(10,2) [not null]
+}
+
+Table Habitacion {
+  id_habitacion int [pk, increment]
+  numero nvarchar(5) [not null, unique]
+  piso tinyint
+  id_tipo int [not null, ref: > TipoHabitacion.id_tipo]
+  estado varchar(15) [not null, default: 'DISPONIBLE']
+}
+
+Table Reserva {
+  id_reserva int [pk, increment]
+  id_cliente int [not null, ref: > Cliente.id_cliente]
+  id_usuario int [not null, ref: > Usuario.id_usuario]
+  fecha_entrada date [not null]
+  fecha_salida date [not null]
+  estado varchar(15) [not null, default: 'CONFIRMADA']
+  total decimal(10,2) [not null, default: 0]
+}
+
+Table DetalleReserva {
+  id_detalle int [pk, increment]
+  id_reserva int [not null]
+  id_habitacion int [not null, ref: > Habitacion.id_habitacion]
+  tarifa_aplicada decimal(10,2) [not null]
+}
+
+Table Estancia {
+  id_estancia int [pk, increment]
+  id_reserva int [not null, unique, ref: - Reserva.id_reserva]
+  fecha_checkin datetime [not null]
+  fecha_checkout datetime
+}
+
+Table Factura {
+  id_factura int [pk, increment]
+  id_estancia int [not null, unique, ref: - Estancia.id_estancia]
+  subtotal decimal(10,2) [not null]
+  iva decimal(10,2) [not null]
+  inguat decimal(10,2) [not null]
+  total decimal(10,2) [not null]
+}
+
+Table Pago {
+  id_pago int [pk, increment]
+  id_factura int [not null, ref: > Factura.id_factura]
+  monto decimal(10,2) [not null]
+  metodo varchar(15) [not null]
+  referencia nvarchar(40)
+  fecha datetime [default: `GETDATE()`]
+}
+
+Table Bitacora {
+  id_bitacora int [pk, increment]
+  accion nvarchar(40) [not null]
+  id_referencia int
+  id_usuario int [ref: > Usuario.id_usuario]
+  fecha datetime [default: `GETDATE()`]
+}
+
+Ref: DetalleReserva.id_reserva > Reserva.id_reserva [delete: cascade]
+
+
+DiagramView Default {
+  Tables {
+    Rol
+    Usuario
+    Cliente
+    TipoHabitacion
+    Habitacion
+    DetalleReserva
+    Estancia
+    Factura
+    Pago
+    Bitacora
+    Reserva
+  }
+  Notes { * }
+}
